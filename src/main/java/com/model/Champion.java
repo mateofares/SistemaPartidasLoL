@@ -21,6 +21,9 @@ public class Champion {
     @Enumerated(EnumType.STRING)
     private Set<TypeDamage> typeDamages;
 
+    @OneToMany(mappedBy = "champion")
+    private Set<Participation> participations;
+
     public Champion(){};
 
     //setters
