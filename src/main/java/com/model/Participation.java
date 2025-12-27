@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Participation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int participationId;
+    private Long participationId;
     @Enumerated(EnumType.STRING)
     private Role role;
     @Enumerated(EnumType.STRING)
@@ -42,7 +42,7 @@ public class Participation {
         this.match = match;
     }
 
-    public void setParticipationId(int participationId) {
+    public void setParticipationId(Long participationId) {
         this.participationId = participationId;
     }
 

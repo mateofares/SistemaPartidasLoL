@@ -5,9 +5,11 @@ import com.repository.ChampionRepository;
 import com.repository.MatchRepository;
 import com.repository.ParticipationRepository;
 import com.repository.PlayerRepository;
+import jakarta.servlet.http.Part;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Component
@@ -41,19 +43,15 @@ public class DataLoader implements CommandLineRunner {
                 new Player("Mateo")
         );
 
-        Match match = matchRepo.save(
-                new Match(TeamSide.Blue_Side)
-        );
+        Match match = new Match(TeamSide.Blue_Side, LocalDate.now());
 
-        participationRepo.save(
-                new Participation(
-                        Role.TOP,
-                        TeamSide.Blue_Side,
-                        mateo,
-                        match,
-                        teemo
-                )
-        );
+        Participation participation = new Participation(Role.TOP,
+                TeamSide.Blue_Side,
+                mateo,
+                match,
+                teemo);
+        matchRepo.save(match);
+        participationRepo.save(participation);
 
     }
 }
