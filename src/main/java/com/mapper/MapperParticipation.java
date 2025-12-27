@@ -2,10 +2,13 @@ package com.mapper;
 
 import com.dto.ParticipationDTO;
 import com.model.Participation;
+import org.springframework.stereotype.Component;
+
+@Component
 
 public class MapperParticipation {
 
-    public static ParticipationDTO toParticipationDTO(Participation participation){
+    public ParticipationDTO toParticipationDTO(Participation participation){
 
         ParticipationDTO participationDTO = new ParticipationDTO(participation.getChampion().getId(),
                 participation.getMatch().getMatchId(),
