@@ -36,4 +36,16 @@ public class Match {
     public void setTeamWinner(TeamSide teamWinner) {
         this.teamWinner = teamWinner;
     }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public Long getMatchId() {
+        return matchId;
+    }
+
+    public TeamSide getTeamWinner() {
+        return teamWinner;
+    }
 }

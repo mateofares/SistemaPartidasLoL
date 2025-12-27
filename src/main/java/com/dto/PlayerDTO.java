@@ -7,6 +7,11 @@ import java.util.List;
 public class PlayerDTO {
     private long id;
     private String nickname;
-    private Integer mainId;
 
+    public PlayerDTO(){};
+
+    public PlayerDTO(long id,String nickname) {
+        this.id = id;
+        this.nickname = nickname;
+    }
 }
