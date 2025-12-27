@@ -9,7 +9,7 @@ import java.util.Set;
 public class Champion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // to not repeat Id
-    private int id;
+    private Long id;
     private String name;
     private String description;
     @ElementCollection
@@ -37,10 +37,6 @@ public class Champion {
         this.difficulty = difficulty;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -51,5 +47,36 @@ public class Champion {
 
     public void setTypeDamages(Set<TypeDamage> typeDamages) {
         this.typeDamages = typeDamages;
+    }
+
+    //getters
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Set<Participation> getParticipations() {
+        return participations;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public Set<TypeDamage> getTypeDamages() {
+        return typeDamages;
     }
 }
