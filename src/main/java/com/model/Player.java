@@ -33,4 +33,16 @@ public class Player {
     public void setParticipations(Set<Participation> participations) {
         this.participations = participations;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public Set<Participation> getParticipations() {
+        return participations;
+    }
 }

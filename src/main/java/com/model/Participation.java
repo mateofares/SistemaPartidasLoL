@@ -57,6 +57,30 @@ public class Participation {
     public void setTeamSide(TeamSide teamSide) {
         this.teamSide = teamSide;
     }
+
+    public Champion getChampion() {
+        return champion;
+    }
+
+    public Match getMatch() {
+        return match;
+    }
+
+    public Long getParticipationId() {
+        return participationId;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public TeamSide getTeamSide() {
+        return teamSide;
+    }
 }
 
 
