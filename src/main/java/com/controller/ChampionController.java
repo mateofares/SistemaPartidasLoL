@@ -8,10 +8,7 @@ import com.model.Role;
 import com.repository.ChampionRepository;
 import com.service.ChampionService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +36,20 @@ public class ChampionController {
     ){
         return ResponseEntity.ok(championService.filter(name,role,difficulty));
     }
-    
+
+    @PostMapping("/add")
+    public void addChampion(
+            @RequestBody ChampionDTO championDTO
+    ){
+        championService.addChampion(championDTO);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<ChampionDTO> deleteChampion(
+            @RequestParam Long id
+    ){
+        championService.deleteChampion(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }

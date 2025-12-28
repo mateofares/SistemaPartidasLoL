@@ -26,6 +26,14 @@ public class Champion {
 
     public Champion(){};
 
+    public Champion(String description, Difficulty difficulty, String name, Set<Role> roles, Set<TypeDamage> typeDamages) {
+        this.description = description;
+        this.difficulty = difficulty;
+        this.name = name;
+        this.roles = roles;
+        this.typeDamages = typeDamages;
+    }
+
     //setters
 
 
