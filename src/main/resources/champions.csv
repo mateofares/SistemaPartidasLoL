@@ -1,0 +1,11 @@
+name,description,difficulty,roles,typeDamages
+Garen,Fighter tank from Demacia,EASY,TOP,PHYSICAL
+Darius,Noxian juggernaut,HARD,TOP,PHYSICAL
+Ahri,Mage assassin fox,MEDIUM,MID,MAGIC
+Lux,Light mage support,MEDIUM,MID|SUPPORT,MAGIC
+Lee Sin,Blind monk fighter,HARD,JUNGLE,PHYSICAL
+Ashe,Ice archer ADC,EASY,ADC,PHYSICAL
+Jinx,Explosive hypercarry,MEDIUM,ADC,PHYSICAL
+Thresh,Chain warden support,HARD,SUPPORT,MAGIC
+Katarina,Burst assassin,HARD,MID,MAGIC
+Sett,Boss juggernaut,MEDIUM,TOP,PHYSICAL|TRUE

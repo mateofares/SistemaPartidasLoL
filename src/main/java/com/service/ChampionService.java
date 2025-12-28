@@ -1,5 +1,6 @@
 package com.service;
 
+import com.converter.DifficultyConverter;
 import com.converter.RoleConverter;
 import com.dto.ChampionDTO;
 import com.dto.PlayerDTO;
@@ -12,23 +13,23 @@ import com.repository.ChampionRepository;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ChampionService implements IChampionService{
 
     private ChampionRepository championRepository;
     private MapperChampion mapperChampion;
+    private DifficultyConverter DifficultyConverter;
     private RoleConverter roleConverter;
 
     public ChampionService(ChampionRepository championRepository,
                            MapperChampion mapperChampion,
+                           DifficultyConverter difficultyConverter,
                            RoleConverter roleConverter){
         this.championRepository=championRepository;
         this.mapperChampion=mapperChampion;
+        this.DifficultyConverter=difficultyConverter;
         this.roleConverter=roleConverter;
     }
 
@@ -40,7 +41,7 @@ public class ChampionService implements IChampionService{
         }
         return championDTOS;
     }
-
+    // ESTOS 3 LOS DEJO IGUAL ,PERO EL UNICO ENDPOINT QUE USO ES EL DEL FILTER
     @Override
     public ChampionDTO findByNickname(String nickname) {
         for (ChampionDTO c : getAllChampions()){
@@ -54,7 +55,7 @@ public class ChampionService implements IChampionService{
     @Override
     public List<ChampionDTO> findByRole(Role role) {
         List<ChampionDTO> championsRole = new ArrayList<>();
-        role = roleConverter.convert(String.valueOf(role));
+       // role = roleConverter.convert(String.valueOf(role));
         for (ChampionDTO c : getAllChampions()){
             if (c.getRoles().contains(role)){
                 championsRole.add(c);
@@ -102,12 +103,27 @@ public class ChampionService implements IChampionService{
 
     // estos despues, primero los getters
     @Override
-    public void addChampion() {
-
+    public void addChampion(ChampionDTO championDTO) {
+        if (championDTO != null){
+            Champion newChampion = new Champion(
+                    championDTO.getDescription(),
+                    championDTO.getDifficulty(),
+                    championDTO.getName(),
+                    championDTO.getRoles(),
+                    championDTO.getTypeDamages()
+            );
+            championRepository.save(newChampion);
+        } else {
+            throw new RuntimeException("ChampionDTO is null");
+        }
     }
 
     @Override
-    public void deleteChampion() {
-
+    public void deleteChampion(Long id) {
+        if (championRepository.existsById(id)){
+            championRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Not exists champion with id: "+id);
+        }
     }
 }

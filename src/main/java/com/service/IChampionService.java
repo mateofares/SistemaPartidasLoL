@@ -17,7 +17,7 @@ public interface IChampionService {
 
     public List<ChampionDTO> findByDifficulty(Difficulty difficulty);
 
-    public void addChampion();
+    public void addChampion(ChampionDTO championDTO);
 
-    public void deleteChampion();
+    public void deleteChampion(Long id);
 }

@@ -8,10 +8,10 @@ import org.springframework.core.convert.converter.Converter;
 import java.lang.annotation.Annotation;
 
 @Component
-public class RoleConverter implements Converter<String, Role> {
+public class DifficultyConverter implements Converter<String, Difficulty> {
 
     @Override
-    public Role convert(String source) {
-        return Role.valueOf(source.toUpperCase());
+    public Difficulty convert(String source) {
+        return Difficulty.valueOf(source.toUpperCase());
     }
 }
