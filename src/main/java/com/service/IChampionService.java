@@ -1,7 +1,6 @@
 package com.service;
 
 import com.dto.ChampionDTO;
-import com.dto.PlayerDTO;
 import com.model.Difficulty;
 import com.model.Role;
 
@@ -20,4 +19,6 @@ public interface IChampionService {
     public void addChampion(ChampionDTO championDTO);
 
     public void deleteChampion(Long id);
+
+    public List<ChampionDTO> filter(String name,Role role,Difficulty difficulty);
 }
