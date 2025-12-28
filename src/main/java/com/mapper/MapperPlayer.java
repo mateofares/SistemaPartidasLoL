@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class MapperPlayer {
 
     public PlayerDTO toPlayerDTO(Player player){
-        PlayerDTO playerDTO = new PlayerDTO(player.getId(),player.getNickname());
+        PlayerDTO playerDTO = new PlayerDTO(player.getId(),player.getNickname(),player.getRegion(), player.getLevel());
         return  playerDTO;
     }
 

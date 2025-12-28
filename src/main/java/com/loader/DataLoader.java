@@ -45,7 +45,7 @@ public class DataLoader implements CommandLineRunner {
         championRepo.save(teemo);
 
         Player mateo = playerRepo.save(
-                new Player("Mateo")
+                new Player("Mateo",400,Region.LAS,Elo.EMERALD)
         );
 
         Match match = new Match(TeamSide.Blue_Side, LocalDate.now());
