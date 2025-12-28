@@ -30,27 +30,15 @@ public class ChampionController {
         this.championService=championService;
         this.mapperChampion=mapperChampion;
     }
-
+    //Cambio: FILTRAR POR QUERY PARAM , NO TANTOS ENDPOINT
     @GetMapping("/all")
-    public ResponseEntity<List<ChampionDTO>> allChampions(){
-        return ResponseEntity.ok(championService.getAllChampions());
+    public ResponseEntity<List<ChampionDTO>> allChampions(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Role role,
+            @RequestParam(required = false) Difficulty difficulty
+    ){
+        return ResponseEntity.ok(championService.filter(name,role,difficulty));
     }
-
-    @GetMapping("/name")
-    public ResponseEntity<ChampionDTO> findByName(@RequestParam String name){
-        return ResponseEntity.ok(championService.findByNickname(name));
-    }
-
-    @GetMapping("/role")
-    public ResponseEntity<List<ChampionDTO>> getByRole(@RequestParam Role role){
-        return ResponseEntity.ok(championService.findByRole(role));
-    }
-
-    @GetMapping("/difficulty")
-    public ResponseEntity<List<ChampionDTO>> getByDifficulty(@RequestParam Difficulty difficulty){
-        return ResponseEntity.ok(championService.findByDifficulty(difficulty));
-    }
-
-
+    
 
 }
