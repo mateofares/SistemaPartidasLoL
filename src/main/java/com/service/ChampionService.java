@@ -9,6 +9,7 @@ import com.model.Champion;
 import com.model.Difficulty;
 import com.model.Role;
 import com.repository.ChampionRepository;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -72,6 +73,33 @@ public class ChampionService implements IChampionService{
         }
         return championsRole;
     }
+
+    public List<ChampionDTO> filter(String name,Role role,Difficulty difficulty){
+        List<Champion> champions = championRepository.findAll();
+
+        if (name != null) {
+            champions = champions.stream()
+                    .filter(c -> c.getName().equalsIgnoreCase(name))
+                    .toList();
+        }
+
+        if (role != null) {
+            champions = champions.stream()
+                    .filter(c -> c.getRoles().contains(role))
+                    .toList();
+        }
+
+        if (difficulty != null) {
+            champions = champions.stream()
+                    .filter(c -> c.getDifficulty() == difficulty)
+                    .toList();
+        }
+
+        return champions.stream()
+                .map(c -> mapperChampion.toChampionDTO(c))
+                .toList();
+    }
+
     // estos despues, primero los getters
     @Override
     public void addChampion() {
