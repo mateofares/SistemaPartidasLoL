@@ -6,13 +6,16 @@ import com.model.Elo;
 import com.model.Player;
 import com.model.Region;
 import com.repository.PlayerRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+
+
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-
+@Transactional
 public class PlayerService implements IPlayerService {
     private PlayerRepository playerRepository;
     private MapperPlayer mapperPlayer;
@@ -35,7 +38,7 @@ public class PlayerService implements IPlayerService {
             players = players.stream().filter(p -> p.getId()==id).toList();
         }
         if (nickname != null){
-            players = players.stream().filter(p -> p.getNickname().equals(nickname)).toList();
+            players = players.stream().filter(p -> p.getNickname().equalsIgnoreCase(nickname)).toList();
         }
         if (region != null){
             players = players.stream().filter(p -> p.getRegion()==region).toList();

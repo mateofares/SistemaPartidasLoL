@@ -1,16 +1,12 @@
 package com.service;
 
-import com.converter.DifficultyConverter;
-import com.converter.RoleConverter;
 import com.dto.ChampionDTO;
-import com.dto.PlayerDTO;
 import com.exceptions.NotFoundException;
 import com.mapper.MapperChampion;
 import com.model.Champion;
 import com.model.Difficulty;
 import com.model.Role;
 import com.repository.ChampionRepository;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -20,17 +16,11 @@ public class ChampionService implements IChampionService{
 
     private ChampionRepository championRepository;
     private MapperChampion mapperChampion;
-    private DifficultyConverter DifficultyConverter;
-    private RoleConverter roleConverter;
 
     public ChampionService(ChampionRepository championRepository,
-                           MapperChampion mapperChampion,
-                           DifficultyConverter difficultyConverter,
-                           RoleConverter roleConverter){
+                           MapperChampion mapperChampion){
         this.championRepository=championRepository;
         this.mapperChampion=mapperChampion;
-        this.DifficultyConverter=difficultyConverter;
-        this.roleConverter=roleConverter;
     }
 
     @Override
