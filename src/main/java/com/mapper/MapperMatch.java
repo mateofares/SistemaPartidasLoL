@@ -3,8 +3,10 @@ package com.mapper;
 import com.dto.MatchDTO;
 import com.dto.ParticipationDTO;
 import com.dto.PlayerDTO;
+import com.dto.TeamDTO;
 import com.model.Match;
 import com.model.Participation;
+import com.model.TeamSide;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,26 +14,29 @@ import java.util.List;
 @Component
 public class MapperMatch {
     private MapperPlayer mapperPlayer;
-    public MapperMatch(MapperPlayer mapperPlayer){
+    private MapperParticipation mapperParticipation;
+
+    public MapperMatch(MapperPlayer mapperPlayer, MapperParticipation mapperParticipation){
         this.mapperPlayer=mapperPlayer;
+        this.mapperParticipation=mapperParticipation;
     }
     public MatchDTO toMatchDTO(Match match){
-        List<PlayerDTO> blueTeam = new ArrayList<>(5);
-        List<PlayerDTO> redTeam = new ArrayList<>(5);
-        int i=1;
-        for(Participation p : match.getParticipations()){
-            if(i<6){
-                PlayerDTO playerDTO = mapperPlayer.toPlayerDTO(p.getPlayer()); //map player to playerDto
-                blueTeam.add(playerDTO);//add player in blue team if i < 5 (when i > 5, the player plays to redTeam)
-            }else{
-                PlayerDTO playerDTO = mapperPlayer.toPlayerDTO(p.getPlayer()); //map player to playerDto
-                redTeam.add(playerDTO); //red team
-            }
-        }
-        MatchDTO matchDTO = new MatchDTO(blueTeam,
+        List<ParticipationDTO> participations = match.getParticipations()
+                .stream().map(p->mapperParticipation.toParticipationDTO(p)).toList();
+
+        List<ParticipationDTO> redTeam = participations.stream().filter(p->p.getTeamSide()== TeamSide.Red_Side).toList();
+        List<ParticipationDTO> blueTeam = participations.stream().filter(p->p.getTeamSide()== TeamSide.Blue_Side).toList();
+
+        TeamDTO blueSide = new TeamDTO(blueTeam,TeamSide.Blue_Side);
+        TeamDTO redSide = new TeamDTO(redTeam,TeamSide.Red_Side);
+
+        List<TeamDTO> teams = new ArrayList<TeamDTO>(2);
+        teams.add(blueSide);
+        teams.add(redSide);
+
+        MatchDTO matchDTO = new MatchDTO(
                                     match.getDate(),
-                                    match.getMatchId(),
-                                    redTeam,
+                                    participations,
                                     match.getTeamWinner());
 
         return matchDTO;

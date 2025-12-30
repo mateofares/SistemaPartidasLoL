@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.time.*;
 @Entity
@@ -16,7 +17,7 @@ public class Match {
     private TeamSide teamWinner;
     private LocalDate date;
     @OneToMany (mappedBy = "match")
-    Set<Participation> participations;
+    List<Participation> participations;
 
     public Match(){}
 
@@ -25,11 +26,11 @@ public class Match {
         this.date=date;
     }
 
-    public Set<Participation> getParticipations() {
+    public List<Participation> getParticipations() {
         return participations;
     }
 
-    public void setParticipations(Set<Participation> participations) {
+    public void setParticipations(List<Participation> participations) {
         this.participations = participations;
     }
 
