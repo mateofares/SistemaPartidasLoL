@@ -12,14 +12,23 @@ public class MatchDTO {
     private Long matchId;
     private TeamSide teamWinner;
     private LocalDate date;
-    private List<PlayerDTO> blueTeam;
-    private List<PlayerDTO> redTeam;
+    private List<ParticipationDTO> participations;
 
-    public MatchDTO(List<PlayerDTO> blueTeam, LocalDate date, Long matchId, List<PlayerDTO> redTeam, TeamSide teamWinner) {
-        this.blueTeam = blueTeam;
+    public MatchDTO(LocalDate date, List<ParticipationDTO> participations, TeamSide teamWinner) {
         this.date = date;
-        this.matchId = matchId;
-        this.redTeam = redTeam;
+        this.participations = participations;
         this.teamWinner = teamWinner;
+    }
+
+    public List<ParticipationDTO> getParticipations() {
+        return participations;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public TeamSide getTeamWinner() {
+        return teamWinner;
     }
 }

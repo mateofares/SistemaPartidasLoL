@@ -98,4 +98,6 @@ public class PlayerService implements IPlayerService {
                 .orElseThrow(()-> new RuntimeException("Player doesn't exist"));
         playerRepository.delete(player);
     }
+
+
 }

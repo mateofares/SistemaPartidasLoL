@@ -116,4 +116,5 @@ public class ChampionService implements IChampionService{
             throw new RuntimeException("Not exists champion with id: "+id);
         }
     }
+
 }
