@@ -6,5 +6,4 @@ public class PlayerStatsDTO {
     private int wins;
     private int losses;
     private double winrate;
-    private String kda;
 }
