@@ -15,6 +15,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("champion")
+@CrossOrigin(origins = "http://localhost:5173")
+
 public class ChampionController {
     private final ChampionRepository championRepository;
     private final ChampionService championService;
