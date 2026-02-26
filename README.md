@@ -14,13 +14,12 @@ El frontend fue desarrollado con enfoque **Vibe Coding** (React + Vite), prioriz
 
 ## Estructura del proyecto
 
-```txt
 SistemaPartidasLoL/
   src/                     # Backend (Spring Boot)
   frontend/                # Frontend (React + Vite)
   pom.xml
   README.md
-```
+
 
 ## Requisitos
 
@@ -28,41 +27,6 @@ SistemaPartidasLoL/
 - Maven 3.9+
 - Node.js 20+
 - PostgreSQL levantado localmente
-
-## Configuracion de base de datos (backend)
-
-Archivo: `src/main/resources/application.properties`
-
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/lol_db
-spring.datasource.username=postgres
-spring.datasource.password=admin
-spring.jpa.hibernate.ddl-auto=update
-```
-
-Ajusta estos valores segun tu entorno.
-
-## Como ejecutar
-
-### 1. Levantar backend
-
-Desde la raiz del proyecto:
-
-```bash
-mvn spring-boot:run
-```
-
-Backend disponible en: `http://localhost:8080`
-
-### 2. Levantar frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend disponible en: `http://localhost:5173`
 
 ## Endpoints principales
 
