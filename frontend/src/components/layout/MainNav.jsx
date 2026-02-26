@@ -65,6 +65,9 @@ function MainNav() {
           <NavLink to="/player" className="top-link">
             JUGADORES
           </NavLink>
+          <NavLink to="/api-console" className="top-link">
+            ENDPOINTS
+          </NavLink>
         </div>
 
         <form className="searchbar" onSubmit={handleSubmit}>

@@ -232,6 +232,92 @@ h2 {
   padding: 0.8rem;
 }
 
+.success-state {
+  color: #9ee6b5;
+  background: rgba(41, 130, 76, 0.22);
+  border: 1px solid rgba(118, 224, 156, 0.35);
+  border-radius: 10px;
+  padding: 0.8rem;
+}
+
+.console-page {
+  display: grid;
+  gap: 1rem;
+}
+
+.console-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.console-card {
+  background: linear-gradient(170deg, rgba(17, 27, 47, 0.93), rgba(14, 22, 39, 0.86));
+  border: 1px solid rgba(182, 194, 223, 0.2);
+  border-radius: 14px;
+  padding: 0.95rem;
+  display: grid;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.console-form {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.console-form input,
+.console-form textarea,
+.console-form button {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(182, 194, 223, 0.24);
+  background: rgba(14, 23, 40, 0.9);
+  color: var(--text);
+  padding: 0.6rem 0.7rem;
+  font-size: 0.82rem;
+  font-family: var(--font-body);
+}
+
+.console-form textarea {
+  resize: vertical;
+  min-height: 6.5rem;
+}
+
+.console-form button {
+  cursor: pointer;
+  font-weight: 700;
+  border: none;
+  background: linear-gradient(135deg, #f2d58c, #c29a4f);
+  color: #0f172a;
+}
+
+.console-output {
+  margin: 0;
+  background: rgba(4, 10, 18, 0.72);
+  border: 1px solid rgba(182, 194, 223, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+  max-height: 220px;
+  overflow: auto;
+  font-size: 0.74rem;
+  line-height: 1.45;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.hint code {
+  color: #f5d694;
+  display: block;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .page-search {
   margin-bottom: 1rem;
 }

@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Champions from "../pages/Champions";
+import ApiConsole from "../pages/ApiConsole";
 import PlayerDetail from "../features/players/pages/PlayerDetail";
 import NotFound from "../pages/NotFound";
 
@@ -10,6 +11,7 @@ function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/player" element={<PlayerDetail />} />
       <Route path="/champions" element={<Champions />} />
+      <Route path="/api-console" element={<ApiConsole />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
