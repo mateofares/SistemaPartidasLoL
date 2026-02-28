@@ -72,4 +72,8 @@ public class Player {
     public Elo getElo() {
         return elo;
     }
+
+    public Set<Participation> getParticipations() {
+        return participations;
+    }
 }

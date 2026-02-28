@@ -1,8 +1,10 @@
 package com.service;
 
 import com.dto.PlayerDTO;
+import com.dto.PlayerStatsDTO;
 import com.mapper.MapperPlayer;
 import com.model.Elo;
+import com.model.Participation;
 import com.model.Player;
 import com.model.Region;
 import com.repository.PlayerRepository;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -97,6 +100,54 @@ public class PlayerService implements IPlayerService {
         Player player = playerRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Player doesn't exist"));
         playerRepository.delete(player);
+    }
+
+    private int getTotal(Long id){
+        Player player = playerRepository.findById(id).
+                orElseThrow(() -> new RuntimeException("Not exists player with that id"));
+
+        return player.getParticipations().size();
+    }
+
+    private int getWins(Set<Participation> participations){
+
+        int wins = participations.stream().filter(participation ->
+                participation.getMatch().getTeamWinner()==participation.getTeamSide()).toList().size();
+
+        return wins;
+    }
+
+    private int getLosses(Set<Participation> participations){
+
+        int losses = participations.stream().filter(participation ->
+                participation.getMatch().getTeamWinner()!=participation.getTeamSide()).toList().size();
+
+        return losses;
+    }
+
+    public PlayerStatsDTO getStats(Long id){
+
+        Player player = playerRepository.findById(id).
+                orElseThrow(() -> new RuntimeException("Not exists player with that id"));
+
+        Set<Participation> participations = player.getParticipations();
+
+        int wins = getWins(participations);
+        int losses = getLosses(participations);
+        int total = wins+losses;
+        double winrate = 0;
+        if (total > 0) {
+            winrate = ((double) wins / total) * 100;
+        }
+        return new PlayerStatsDTO(
+                losses,
+                id,
+                total,
+                winrate,
+                wins
+        );
+
+
     }
 
 
