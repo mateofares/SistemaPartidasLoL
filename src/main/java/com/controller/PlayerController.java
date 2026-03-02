@@ -2,6 +2,7 @@ package com.controller;
 
 import com.dto.PlayerDTO;
 import com.dto.PlayerStatsDTO;
+import com.dto.PlayerWithChampionStatsDTO;
 import com.model.Elo;
 import com.model.Region;
 import com.repository.PlayerRepository;
@@ -40,6 +41,13 @@ public class PlayerController {
             @RequestParam Long id
     ){
         return ResponseEntity.ok(playerService.getStats(id));
+    }
+
+    @GetMapping("/getChampionsStats")
+    public ResponseEntity<List<PlayerWithChampionStatsDTO>> getChampionsStats(
+            @RequestParam Long id
+    ){
+        return ResponseEntity.ok(playerService.getChampsStats(id));
     }
 
     @PostMapping("/add")
