@@ -2,6 +2,10 @@
 
 Aplicacion para gestionar informacion de jugadores, campeones y partidas de League of Legends.
 
+## Nota sobre el frontend
+
+El frontend es una capa inicial (MVP) desarrollada con enfoque Vibe Coding (React + Vite), orientada a validar flujos y consumir la API del backend.
+
 ## Stack tecnologico
 
 - Backend: Java 17, Spring Boot 3, Spring Web, Spring Data JPA
@@ -292,3 +296,4 @@ SistemaPartidasLoL/
 ## Notas de CORS
 
 Los controladores exponen CORS para `http://localhost:5173`.
+
