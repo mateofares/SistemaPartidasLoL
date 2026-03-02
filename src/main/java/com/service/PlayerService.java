@@ -22,13 +22,10 @@ import java.util.*;
 public class PlayerService implements IPlayerService {
     private PlayerRepository playerRepository;
     private MapperPlayer mapperPlayer;
-    private MapperChampion mapperChampion;
 
-    public PlayerService(MapperPlayer mapperPlayer, PlayerRepository playerRepository,
-                         MapperChampion mapperChampion) {
+    public PlayerService(MapperPlayer mapperPlayer, PlayerRepository playerRepository) {
         this.mapperPlayer = mapperPlayer;
         this.playerRepository = playerRepository;
-        this.mapperChampion = mapperChampion;
     }
 
     @Override
