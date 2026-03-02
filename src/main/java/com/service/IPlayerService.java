@@ -23,6 +23,6 @@ public interface IPlayerService {
 
     public PlayerStatsDTO getStats(Long id);
 
-    public List<PlayerWithChampionStatsDTO> getChampStats(Long id);
+    public List<PlayerWithChampionStatsDTO> getChampsStats(Long id);
 
 }
