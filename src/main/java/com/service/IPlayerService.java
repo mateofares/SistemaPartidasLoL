@@ -1,6 +1,8 @@
 package com.service;
 
 import com.dto.PlayerDTO;
+import com.dto.PlayerStatsDTO;
+import com.dto.PlayerWithChampionStatsDTO;
 import com.model.Elo;
 import com.model.Player;
 import com.model.Region;
@@ -18,5 +20,9 @@ public interface IPlayerService {
     public void updatePlayer(Long id,String nickname, Region region, Integer level, Elo elo);
 
     public void deletePlayer(Long id);
+
+    public PlayerStatsDTO getStats(Long id);
+
+    public List<PlayerWithChampionStatsDTO> getChampStats(Long id);
 
 }
