@@ -1,15 +1,7 @@
-import MainNav from "./components/layout/MainNav";
-import AppRoutes from "./app/routes";
+﻿import HomePage from "./pages/HomePage/HomePage";
 
 function App() {
-  return (
-    <div className="app-shell">
-      <MainNav />
-      <main className="app-content">
-        <AppRoutes />
-      </main>
-    </div>
-  );
+  return <HomePage />;
 }
 
 export default App;
